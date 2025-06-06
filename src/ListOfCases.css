@@ -103,7 +103,6 @@
   font-weight: bold;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .listofcases-header {
     padding: 15px 20px;

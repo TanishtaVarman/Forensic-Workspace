@@ -1,4 +1,3 @@
-// NewCasePage.js
 import React, { useState } from 'react';
 import './NewCasePage.css';
 
@@ -78,7 +77,7 @@ function NewCasePage() {
   return (
     <div className="new-case-page">
       <div className="new-case-container">
-        {/* Header */}
+     
         <div className="page-header">
           <h1>Create New Case</h1>
           <p>Enter case details and documentation</p>
@@ -87,13 +86,13 @@ function NewCasePage() {
         <form onSubmit={handleSubmit}>
           {inputSections.map((section, sectionIndex) => (
             <div key={sectionIndex} className="form-section">
-              {/* Section Header */}
+             
               <div className="section-header">
                 <div className="section-icon">{section.icon}</div>
                 <h3>{section.title}</h3>
               </div>
 
-              {/* Section Fields */}
+           
               <div className="section-fields">
                 {section.fields.map((field, fieldIndex) => (
                   <div key={fieldIndex} className="form-group">
@@ -144,7 +143,7 @@ function NewCasePage() {
             </div>
           ))}
 
-          {/* Submit Button */}
+         
           <div className="submit-section">
             <button type="submit" className="submit-btn">
               <span className="btn-icon">🛡️</span>

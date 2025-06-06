@@ -2,19 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';
-import Profile from './Profile'; // ADD THIS IMPORT
-
+import Profile from './Profile'; 
 const ListOfCases = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('All');
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
-  const [showProfile, setShowProfile] = useState(false); // ADD THIS STATE
-
-  // Reduced case data - 8 cases total
+  const [showProfile, setShowProfile] = useState(false); 
   const [cases] = useState([
-    // Digital Cases (2)
     {
       id: 'CASE-001',
       title: 'Digital Fraud Investigation',
@@ -33,7 +29,6 @@ const ListOfCases = () => {
       assignedTo: 'Agent Johnson',
       description: 'Analysis of corporate data breach incident'
     },
-    // Murder Cases (3)
     {
       id: 'CASE-003',
       title: 'Downtown Homicide Investigation',
@@ -61,7 +56,6 @@ const ListOfCases = () => {
       assignedTo: 'Detective Rodriguez',
       description: 'Body discovered in city park - forensic evidence under review'
     },
-    // Terrorist Cases (2)
     {
       id: 'CASE-006',
       title: 'Suspicious Package Investigation',
@@ -80,7 +74,6 @@ const ListOfCases = () => {
       assignedTo: 'Agent Chen',
       description: 'Monitoring suspected terrorist recruitment activities on social media platforms'
     },
-    // Kidnapping Case (1)
     {
       id: 'CASE-008',
       title: 'Child Abduction Investigation',
@@ -92,19 +85,16 @@ const ListOfCases = () => {
     }
   ]);
 
-  // Check authentication state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
         setLoading(false);
       } else {
-        // User is not authenticated, redirect to login
         navigate('/');
       }
     });
 
-    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, [navigate]);
 
@@ -114,7 +104,6 @@ const ListOfCases = () => {
       navigate('/');
     } catch (error) {
       console.error('Error signing out:', error);
-      // Even if there's an error, redirect to login
       navigate('/');
     }
   };
@@ -123,7 +112,6 @@ const ListOfCases = () => {
     navigate(`/case/${caseId}`);
   };
 
-  // Calculate case statistics
   const getStatusCounts = () => {
     const counts = {
       Closed: cases.filter(c => c.status === 'Closed').length,
@@ -150,15 +138,15 @@ const ListOfCases = () => {
   const getStatusColor = (status) => {
     switch (status) {
       case 'Closed':
-        return '#10b981'; // Green
+        return '#10b981'; 
       case 'Open':
-        return '#eab308'; // Yellow
+        return '#eab308'; 
       case 'Ongoing':
-        return '#ef4444'; // Red
+        return '#ef4444'; 
       case 'Dead':
-        return '#8b4513'; // Brown
+        return '#8b4513'; 
       case 'Reviewing':
-        return '#f97316'; // Orange
+        return '#f97316';  
       default:
         return '#6b7280';
     }
@@ -213,7 +201,6 @@ const ListOfCases = () => {
     }
   };
 
-  // Show loading spinner while checking authentication
   if (loading) {
     return (
       <div style={{
@@ -252,7 +239,6 @@ const ListOfCases = () => {
     );
   }
 
-  // ADD THIS CONDITIONAL RENDER FOR PROFILE
   if (showProfile) {
     return <Profile onBack={() => setShowProfile(false)} />;
   }

@@ -9,7 +9,7 @@ function Login() {
   const [idNumber, setIdNumber] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [isSignUp, setIsSignUp] = useState(false); // Toggle between login/signup
+  const [isSignUp, setIsSignUp] = useState(false); 
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -21,21 +21,17 @@ function Login() {
     setLoading(true);
 
     try {
-      // Convert username to valid email format by removing spaces and making lowercase
       const emailUsername = username.toLowerCase().replace(/\s+/g, '');
       const email = `${emailUsername}@ekspertiza-forensic.com`;
       
       if (isSignUp) {
-        // Create new user
         await createUserWithEmailAndPassword(auth, email, password);
         console.log('User created successfully');
       } else {
-        // Sign in existing user
         await signInWithEmailAndPassword(auth, email, password);
         console.log('User signed in successfully');
       }
       
-      // Navigate to list of cases on successful authentication
       navigate('/ListOfCases');
     } catch (error) {
       console.error('Authentication error:', error);

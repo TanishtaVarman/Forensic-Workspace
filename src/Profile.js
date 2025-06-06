@@ -31,7 +31,6 @@ const Profile = ({ onBack }) => {
 
   const [editData, setEditData] = useState({ ...profileData });
 
-  // Listen for authentication state changes and load user data
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
@@ -46,7 +45,6 @@ const Profile = ({ onBack }) => {
     return () => unsubscribe();
   }, []);
 
-  // Load user data from Firestore
   const loadUserData = async (currentUser) => {
     try {
       const userDocRef = doc(db, 'users', currentUser.uid);
@@ -62,7 +60,6 @@ const Profile = ({ onBack }) => {
           designation: userData.designation || 'Investigator'
         });
       } else {
-        // Create initial user document if it doesn't exist
         const initialData = {
           name: currentUser.displayName || 'User',
           email: currentUser.email,
@@ -83,9 +80,8 @@ const Profile = ({ onBack }) => {
     }
   };
 
-  // Generate a numeric ID
   const generateNumericId = () => {
-    return Math.floor(Math.random() * 9000000000) + 1000000000; // 10-digit number
+    return Math.floor(Math.random() * 9000000000) + 1000000000; 
   };
 
   const handleEdit = () => {
@@ -95,7 +91,6 @@ const Profile = ({ onBack }) => {
 
   const handleSave = async () => {
     try {
-      // Check if password update is needed
       if (editData.password && editData.password !== '') {
         setShowReauthModal(true);
         return;
@@ -110,14 +105,12 @@ const Profile = ({ onBack }) => {
 
   const saveProfile = async () => {
     try {
-      // Update Firebase Auth display name
       if (editData.name !== profileData.name && user) {
         await updateProfile(user, {
           displayName: editData.name
         });
       }
 
-      // Update Firestore document
       const userDocRef = doc(db, 'users', user.uid);
       await updateDoc(userDocRef, {
         name: editData.name,
@@ -126,7 +119,6 @@ const Profile = ({ onBack }) => {
         updatedAt: new Date().toISOString()
       });
 
-      // Update local state
       const updatedData = { ...editData };
       updatedData.password = '••••••••';
       
@@ -147,16 +139,13 @@ const Profile = ({ onBack }) => {
         return;
       }
 
-      // Re-authenticate user
       const credential = EmailAuthProvider.credential(user.email, currentPassword);
       await reauthenticateWithCredential(user, credential);
 
-      // Update password
       if (editData.password && editData.password !== '') {
         await updatePassword(user, editData.password);
       }
 
-      // Close reauth modal and save other profile data
       setShowReauthModal(false);
       setCurrentPassword('');
       await saveProfile();
@@ -277,7 +266,6 @@ const Profile = ({ onBack }) => {
                   className="form-input"
                   value={editData.idNumber}
                   onChange={(e) => {
-                    // Only allow numbers
                     const numericValue = e.target.value.replace(/\D/g, '');
                     handleInputChange('idNumber', numericValue);
                   }}
@@ -320,7 +308,6 @@ const Profile = ({ onBack }) => {
         </div>
       </div>
 
-      {/* Re-authentication Modal */}
       {showReauthModal && (
         <div className="modal-overlay">
           <div className="modal-content">

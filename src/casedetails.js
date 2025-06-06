@@ -18,9 +18,7 @@ const CaseDetail = () => {
   const [showAddEvidence, setShowAddEvidence] = useState(false);
   const [newEvidence, setNewEvidence] = useState({ name: '', type: 'Physical', file: null });
 
-  // All cases data - moved inside component
   const allCases = [
-  // Existing cases (1-4)
   {
     id: 'CASE-001',
     title: 'Digital Fraud Investigation',
@@ -71,7 +69,6 @@ const CaseDetail = () => {
       { id: 1, date: '2024-11-28', author: 'Agent Johnson', content: 'Zero-day exploit suspected in VPN appliance' }
     ]
   },
-  // New cases (5-8)
   {
     id: 'CASE-003',
     title: 'Downtown Homicide Investigation',
@@ -251,7 +248,6 @@ const CaseDetail = () => {
 
   const [notes, setNotes] = useState(currentCase?.notes || []);
 
-  // Firebase auth effect
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -260,7 +256,6 @@ const CaseDetail = () => {
     return () => unsubscribe();
   }, []);
 
-  // Update notes when currentCase changes  
 
 useEffect(() => {
   if (currentCase) {
@@ -269,7 +264,6 @@ useEffect(() => {
 }, [currentCase]);
 
 
-  // Helper functions
   const toggleEditMode = (section, id = null) => {
     const key = id ? `${section}-${id}` : section;
     setEditMode(prev => ({
@@ -335,7 +329,7 @@ useEffect(() => {
     const updatedNotes = [...notes];
     updatedNotes[editingNoteIndex] = {
       ...newNote,
-      date: notes[editingNoteIndex].date // Keep original date
+      date: notes[editingNoteIndex].date 
     };
     setNotes(updatedNotes);
     setNewNote({ author: '', content: '' });
@@ -354,7 +348,6 @@ useEffect(() => {
     setNewNote({ author: '', content: '' });
   };
 
-  // Helper function to get status colors
   const getStatusColor = (status) => {
     switch (status) {
       case 'Closed': return '#10b981'; 
@@ -366,7 +359,6 @@ useEffect(() => {
     }
   };
 
-  // Helper function to get priority colors
   const getPriorityColor = (priority) => {
     switch (priority) {
       case 'High': return '#ef4444';
@@ -376,7 +368,6 @@ useEffect(() => {
     }
   };
 
-  // Helper function to get evidence status colors
   const getEvidenceStatusColor = (status) => {
     switch (status) {
       case 'Analyzed': return '#10b981';
@@ -397,12 +388,10 @@ useEffect(() => {
     }
   };
 
-  // Loading state
   if (loading) {
     return <div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Loading...</div>;
   }
 
-  // Case not found
   if (!currentCase) {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
@@ -433,7 +422,6 @@ useEffect(() => {
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif',
       padding: '20px'
     }}>
-      {/* Header */}
       <div style={{
         display: 'flex',
         justifyContent: 'space-between',
@@ -475,7 +463,6 @@ useEffect(() => {
         </div>
       </div>
 
-      {/* Case Header */}
       <div style={{
         backgroundColor: 'rgba(255, 255, 255, 0.95)',
         borderRadius: '16px',
@@ -566,7 +553,6 @@ useEffect(() => {
           </div>
         </div>
 
-        {/* Case details grid */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
@@ -617,7 +603,6 @@ useEffect(() => {
           </div>
         </div>
 
-        {/* Description */}
         <div style={{ marginTop: '20px' }}>
           <strong style={{ color: '#374151' }}>Description:</strong>
           {editMode.header ? (
@@ -640,7 +625,6 @@ useEffect(() => {
         </div>
       </div>
 
-      {/* Navigation Tabs */}
       <div style={{
         display: 'flex',
         marginBottom: '30px',
@@ -672,7 +656,6 @@ useEffect(() => {
         ))}
       </div>
 
-      {/* Tab Content */}
       <div style={{
         backgroundColor: 'rgba(255, 255, 255, 0.95)',
         borderRadius: '16px',

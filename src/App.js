@@ -1,4 +1,3 @@
-// App.js - Updated with Firebase authentication and existing routing
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -8,10 +7,6 @@ import Login from './Login';
 import NewCasePage from './NewCasePage';
 import ListOfCases from './ListOfCases';
 import CaseDetails from './casedetails';
-
-
-
-// Protected Route component
 function ProtectedRoute({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -49,7 +44,6 @@ function Home() {
     return () => unsubscribe();
   }, []);
 
-  // Show loading state while checking authentication
   if (loading) {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#1e3a8a' }}>
@@ -66,7 +60,6 @@ function Home() {
       flexDirection: 'column',
       fontFamily: 'Arial, sans-serif'
     }}>
-      {/* Header */}
       <div style={{
         display: 'flex',
         justifyContent: 'flex-start',
@@ -88,7 +81,6 @@ function Home() {
         </div>
       </div>
 
-      {/* Main Content */}
       <div style={{
         flex: 1,
         display: 'flex',
@@ -100,7 +92,6 @@ function Home() {
         margin: '0 auto',
         width: '100%'
       }}>
-        {/* Left Side Content */}
         <div style={{ flex: 1, maxWidth: '650px', textAlign: 'left', paddingLeft: '40px' }}>
           <h1 style={{
             color: 'white',
@@ -137,7 +128,6 @@ function Home() {
             Ekspertiza is a secure, all-in-one platform designed for forensic professionals to manage digital evidence with ease. From case creation to secure evidence storage and chain of custody tracking, we handle the technical complexity so you can focus on solving cases and delivering justice.
           </p>
 
-          {/* Buttons */}
           <div style={{ display: 'flex', gap: '25px', marginBottom: '80px' }}>
             <Link to="/login" style={{ textDecoration: 'none' }}>
               <button style={{
@@ -178,10 +168,8 @@ function Home() {
           </div>
         </div>
 
-        {/* Right Side Illustration */}
         <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <svg width="450" height="450" viewBox="0 0 450 450" style={{ maxWidth: '100%' }}>
-            {/* Gradient definitions */}
             <defs>
               <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" style={{stopColor: '#3b82f6', stopOpacity: 0.8}} />
@@ -196,23 +184,19 @@ function Home() {
               </filter>
             </defs>
             
-            {/* Main device/tablet */}
             <rect x="100" y="80" width="250" height="180" fill="url(#cardGradient)" rx="20" filter="url(#shadow)"/>
             <rect x="115" y="95" width="220" height="150" fill="url(#screenGradient)" rx="8"/>
             
-            {/* Screen content - dashboard elements */}
             <rect x="130" y="110" width="60" height="8" fill="#3b82f6" rx="4"/>
             <rect x="200" y="110" width="40" height="8" fill="#10b981" rx="4"/>
             <rect x="250" y="110" width="70" height="8" fill="#f59e0b" rx="4"/>
             
-            {/* Chart visualization */}
             <rect x="130" y="130" width="8" height="40" fill="#3b82f6" rx="2"/>
             <rect x="145" y="140" width="8" height="30" fill="#10b981" rx="2"/>
             <rect x="160" y="125" width="8" height="45" fill="#f59e0b" rx="2"/>
             <rect x="175" y="135" width="8" height="35" fill="#ef4444" rx="2"/>
             <rect x="190" y="120" width="8" height="50" fill="#8b5cf6" rx="2"/>
             
-            {/* Data cards */}
             <rect x="220" y="130" width="90" height="25" fill="white" rx="6" stroke="#e2e8f0"/>
             <rect x="225" y="135" width="20" height="4" fill="#6b7280" rx="2"/>
             <rect x="225" y="142" width="35" height="4" fill="#3b82f6" rx="2"/>
@@ -223,30 +207,25 @@ function Home() {
             <rect x="225" y="177" width="40" height="4" fill="#10b981" rx="2"/>
             <rect x="225" y="184" width="30" height="4" fill="#6b7280" rx="2"/>
             
-            {/* Security elements */}
             <circle cx="200" cy="320" r="45" fill="#1f2937" opacity="0.1"/>
             <circle cx="200" cy="320" r="35" fill="#374151" opacity="0.8"/>
             <path d="M190 310 L190 300 Q190 295 195 295 L205 295 Q210 295 210 300 L210 310 M185 310 L215 310 Q220 310 220 315 L220 325 Q220 330 215 330 L185 330 Q180 330 180 325 L180 315 Q180 310 185 310" fill="#fbbf24"/>
             <circle cx="200" cy="322" r="3" fill="#92400e"/>
             
-            {/* Network connections */}
             <line x1="200" y1="280" x2="200" y2="260" stroke="#60a5fa" strokeWidth="3" strokeDasharray="5,5"/>
             <line x1="200" y1="260" x2="225" y2="200" stroke="#60a5fa" strokeWidth="3"/>
             <line x1="200" y1="260" x2="175" y2="200" stroke="#60a5fa" strokeWidth="3"/>
             
-            {/* Connection nodes */}
             <circle cx="200" cy="260" r="6" fill="#3b82f6"/>
             <circle cx="225" cy="200" r="5" fill="#10b981"/>
             <circle cx="175" cy="200" r="5" fill="#f59e0b"/>
             
-            {/* Document in hand */}
             <rect x="340" y="290" width="25" height="35" fill="white" rx="3" stroke="#d1d5db" strokeWidth="1"/>
             <line x1="344" y1="298" x2="358" y2="298" stroke="#9ca3af" strokeWidth="1"/>
             <line x1="344" y1="304" x2="358" y2="304" stroke="#9ca3af" strokeWidth="1"/>
             <line x1="344" y1="310" x2="355" y2="310" stroke="#9ca3af" strokeWidth="1"/>
             <line x1="344" y1="316" x2="352" y2="316" stroke="#9ca3af" strokeWidth="1"/>
             
-            {/* Floating data elements */}
             <circle cx="120" cy="200" r="8" fill="#ec4899" opacity="0.7"/>
             <rect x="115" y="195" width="10" height="10" fill="white" rx="1"/>
             <text x="120" y="202" textAnchor="middle" fontSize="8" fill="#1f2937">📊</text>
@@ -258,7 +237,6 @@ function Home() {
         </div>
       </div>
 
-      {/* Footer with Contact Section */}
       <footer style={{
         borderTop: '1px solid rgba(255, 255, 255, 0.2)',
         padding: '40px 60px',

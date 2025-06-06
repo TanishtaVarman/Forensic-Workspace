@@ -367,7 +367,6 @@
   to { transform: rotate(360deg); }
 }
 
-/* Modal Styles */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -460,7 +459,6 @@
   box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
 }
 
-/* Responsive Design */
 @media (max-width: 1200px) {
   .profile-content {
     grid-template-columns: 1fr;

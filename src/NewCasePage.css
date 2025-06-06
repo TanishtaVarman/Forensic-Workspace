@@ -1,6 +1,4 @@
-/* NewCasePage.css */
 
-/* Page Background */
 .new-case-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -8,13 +6,11 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Main Container */
 .new-case-container {
   max-width: 900px;
   margin: 0 auto;
 }
 
-/* Page Header */
 .page-header {
   text-align: center;
   margin-bottom: 3rem;
@@ -33,7 +29,6 @@
   font-size: 1.1rem;
 }
 
-/* Form Sections */
 .form-section {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -44,7 +39,6 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-/* Section Headers */
 .section-header {
   display: flex;
   align-items: center;
@@ -70,7 +64,6 @@
   margin: 0;
 }
 
-/* Form Groups */
 .form-group {
   margin-bottom: 1.5rem;
 }
@@ -88,7 +81,6 @@
   margin-left: 4px;
 }
 
-/* Input Fields */
 .form-group input[type="text"],
 .form-group textarea {
   width: 100%;
@@ -120,7 +112,6 @@
   resize: vertical;
 }
 
-/* File Upload Area */
 .file-upload-area {
   position: relative;
   border: 2px dashed rgba(255, 255, 255, 0.3);
@@ -162,7 +153,6 @@
   font-size: 0.95rem;
 }
 
-/* Submit Section */
 .submit-section {
   display: flex;
   justify-content: center;
@@ -199,7 +189,6 @@
   font-size: 1.1rem;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .new-case-page {
     padding: 1rem 0.5rem;
@@ -220,7 +209,6 @@
   }
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
