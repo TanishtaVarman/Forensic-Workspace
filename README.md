@@ -3,8 +3,8 @@
 A comprehensive online workspace designed for forensic officers and crime investigators to store, organise, and manage their cases efficiently. Built with React and Firebase for secure, real-time data management.
 For testing purposes, create a new account using the signup feature or contact the repository maintainer for demo credentials.
 No user can log in without signing up; for easier use and immediate access with the given firebase credentials, this is the user's details:
-#### name: Tanishta Varman 
-#### ID: 203203456123  
+#### name: Austin Mylier
+#### ID: 20320345612
 #### Password: ABCD123@.
 
 ## Frontend :
