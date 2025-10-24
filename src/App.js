@@ -77,7 +77,7 @@ function Home() {
           color: 'white',
           letterSpacing: '1px'
         }}>
-          EKSPERTIZA ❄️
+          Order ❄️
         </div>
       </div>
 
@@ -113,7 +113,7 @@ function Home() {
             textShadow: '0 2px 10px rgba(0,0,0,0.3)',
             marginTop: '-20px'
           }}>
-            to Ekspertiza
+            to Order
           </h2>
           
           <p style={{
@@ -125,7 +125,7 @@ function Home() {
             maxWidth: '580px',
             textAlign: 'left'
           }}>
-            Ekspertiza is a secure, all-in-one platform designed for forensic professionals to manage digital evidence with ease. From case creation to secure evidence storage and chain of custody tracking, we handle the technical complexity so you can focus on solving cases and delivering justice.
+            Order is a secure, all-in-one platform designed for forensic professionals to manage digital evidence with ease. From case creation to secure evidence storage and chain of custody tracking, we handle the technical complexity so you can focus on solving cases and delivering justice.
           </p>
 
           <div style={{ display: 'flex', gap: '25px', marginBottom: '80px' }}>
@@ -264,7 +264,7 @@ function Home() {
             maxWidth: '600px'
           }}>
             Have any questions or need assistance? Our team is here to support you every step of the way.<br />
-            Reach us at <a href="https://www.ekspertiza-platform.com" style={{ color: '#60a5fa', textDecoration: 'underline' }}>www.ekspertiza-platform.com</a> or <span style={{ color: '#60a5fa' }}>[+91-98765-43210]</span>.
+            Reach us at <a href="https://www.Order-platform.com" style={{ color: '#60a5fa', textDecoration: 'underline' }}>www.Order-platform.com</a> or <span style={{ color: '#60a5fa' }}>[+91-98765-43210]</span>.
           </p>
         </div>
       </footer>
