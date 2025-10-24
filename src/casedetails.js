@@ -459,7 +459,7 @@ useEffect(() => {
           color: 'white',
           letterSpacing: '1px'
         }}>
-          EKSPERTIZA ❄️
+          Order ❄️
         </div>
       </div>
 
