@@ -275,7 +275,7 @@ const ListOfCases = () => {
             color: 'white',
             letterSpacing: '1px'
           }}>
-            EKSPERTIZA ❄️
+            Order ❄️
           </div>
           {user && (
             <div style={{
